@@ -1,6 +1,5 @@
 package com.example.demo.repository.board.videoBoard;
 
-import com.example.demo.entity.board.freeBoard.FreeBoardComments;
 import com.example.demo.entity.board.photoBoard.PhotoBoardComments;
 import com.example.demo.entity.board.videoBoard.VideoBoardComments;
 import org.springframework.data.jpa.repository.JpaRepository;

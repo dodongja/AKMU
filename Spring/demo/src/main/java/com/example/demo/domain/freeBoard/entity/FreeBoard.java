@@ -1,8 +1,7 @@
-package com.example.demo.entity.board.freeBoard;
+package com.example.demo.domain.board.freeBoard;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Formula;

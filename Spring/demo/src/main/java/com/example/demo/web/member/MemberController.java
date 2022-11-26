@@ -2,8 +2,7 @@ package com.example.demo.controller.member;
 
 import com.example.demo.dto.request.MemberRequest;
 import com.example.demo.dto.response.DuplicationCheck;
-import com.example.demo.entity.member.User;
-import com.example.demo.service.member.MemberService;
+import com.example.demo.application.member.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 

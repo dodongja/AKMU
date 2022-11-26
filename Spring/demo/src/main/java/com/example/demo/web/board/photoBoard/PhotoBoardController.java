@@ -1,7 +1,7 @@
 //package com.example.demo.controller.board.photoBoard;
 //
-//import com.example.demo.dto.response.BoardResponse;
-//import com.example.demo.dto.request.BoardRequest;
+//import com.example.demo.web.board.dto.BoardResponse;
+//import com.example.demo.web.board.dto.BoardRequest;
 //import com.example.demo.dto.request.CommentRequest;
 //import com.example.demo.dto.request.LikeRequest;
 //import com.example.demo.service.board.BaseBoardService;

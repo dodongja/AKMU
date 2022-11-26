@@ -1,6 +1,5 @@
 package com.example.demo.repository.board.photoBoard;
 
-import com.example.demo.entity.board.freeBoard.FreeBoardComments;
 import com.example.demo.entity.board.photoBoard.PhotoBoardComments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
