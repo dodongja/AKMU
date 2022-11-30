@@ -1,13 +1,11 @@
-package com.example.demo.service.board;
+package com.example.demo.application.board;
 
-import com.example.demo.dto.request.BoardRequest;
+import com.example.demo.web.board.dto.BoardRequest;
 import com.example.demo.dto.request.LikeRequest;
-import com.example.demo.dto.response.BoardResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.List;
 import java.util.UUID;
 
 public abstract class BaseBoardService {

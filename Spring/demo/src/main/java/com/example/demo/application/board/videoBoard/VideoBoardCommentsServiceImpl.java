@@ -1,14 +1,14 @@
-package com.example.demo.service.board.videoBoard;
+package com.example.demo.application.board.videoBoard;
 
+import com.example.demo.application.board.BaseCommentService;
 import com.example.demo.dto.request.CommentRequest;
 import com.example.demo.dto.request.ReplyRequest;
 import com.example.demo.dto.response.CommentResponse;
 import com.example.demo.entity.board.photoBoard.PhotoBoardComments;
 import com.example.demo.entity.board.videoBoard.VideoBoard;
 import com.example.demo.entity.board.videoBoard.VideoBoardComments;
-import com.example.demo.repository.board.videoBoard.VideoBoardCommentsRepository;
-import com.example.demo.repository.board.videoBoard.VideoBoardRepository;
-import com.example.demo.service.board.BaseCommentService;
+import com.example.demo.domain.videoBoard.repository.VideoBoardCommentsRepository;
+import com.example.demo.domain.videoBoard.repository.VideoBoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

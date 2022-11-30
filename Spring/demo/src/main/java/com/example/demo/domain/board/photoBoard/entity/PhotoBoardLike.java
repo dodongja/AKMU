@@ -1,6 +1,6 @@
 //package com.example.demo.entity.board.photoBoard;
 //
-//import com.example.demo.entity.member.User;
+//import com.example.demo.domain.user.entity.User;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 //import lombok.*;
 //import org.hibernate.annotations.CreationTimestamp;

@@ -1,7 +1,7 @@
 package com.example.demo.dto.request;
 
 
-import com.example.demo.entity.board.freeBoard.FreeBoardComments;
+import com.example.demo.domain.board.freeBoard.entity.FreeBoardComments;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

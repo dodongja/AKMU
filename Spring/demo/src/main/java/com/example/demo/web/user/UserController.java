@@ -1,8 +1,8 @@
-package com.example.demo.controller.member;
+package com.example.demo.web.user;
 
-import com.example.demo.dto.request.MemberRequest;
+import com.example.demo.web.user.dto.UserRequest;
 import com.example.demo.dto.response.DuplicationCheck;
-import com.example.demo.application.member.MemberService;
+import com.example.demo.application.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RequestMapping("/member")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
-public class MemberController {
+public class UserController {
 
     @Autowired
-    private MemberService memberService;
+    private UserService memberService;
 
 
     @PostMapping("/register")
-    public DuplicationCheck memberRegister(@Validated @RequestBody MemberRequest memberRequest){
-        log.info("memberRegister request" + memberRequest);
+    public DuplicationCheck memberRegister(UserRequest userRequest){
+        log.info("memberRegister request" + userRequest);
 
 
-        return memberService.register(memberRequest);
+        return memberService.register(userRequest);
 
     }
 
     @PostMapping("/login")
-    public MemberRequest memberLogin (@RequestBody MemberRequest memberRequest) {
+    public UserRequest memberLogin (@RequestBody UserRequest memberRequest) {
         log.info("MemberLogin()" + memberRequest);
 
-        MemberRequest memberResponse = memberService.login(memberRequest);
+        UserRequest memberResponse = memberService.login(memberRequest);
 
         if (memberResponse != null){
             log.info("Login Success");
@@ -44,7 +44,7 @@ public class MemberController {
     }
 
     @PutMapping("/modify")
-    public MemberRequest memberInformationModify (@RequestBody MemberRequest memberRequest) {
+    public UserRequest memberInformationModify (@RequestBody UserRequest memberRequest) {
         log.info("memberModify(): " + memberRequest.getPassword());
 
         memberService.modify(memberRequest);

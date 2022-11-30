@@ -1,5 +1,6 @@
-package com.example.demo.entity.member;
+package com.example.demo.domain.board.user.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -7,9 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 
 
@@ -40,40 +39,17 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "member_no")
-    private List<Role> role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role",
+            columnDefinition = "varchar(20)")
+    private Role role;
 
-
-    public User(Long id, String password, String nickname, String email) {
-        this.id = id;
+    @Builder
+    public User(String email, String password, String nickname) {
+        this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.email = email;
     }
-
-    public User(Long id, String password, Role auth) {
-        this.id = id;
-        this.password = password;
-
-        if(auth != null){
-            changeAuth(auth);
-        }
-    }
-
-    public void changeAuth (Role auth){}
-
-    /*public void addAuth (Role auth) {
-        if(authList == null) {
-            authList = new ArrayList<>();
-        }
-
-        authList.add(auth);
-    }
-
-    public void clearAuthList() {
-        authList.clear();
-    }*/
 
 
 }

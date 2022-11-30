@@ -1,12 +1,12 @@
 //package com.example.demo.service.board.photoBoard;
 //
-//import com.example.demo.dto.response.BoardResponse;
-//import com.example.demo.dto.request.BoardRequest;
+//import com.example.demo.web.board.dto.BoardResponse;
+//import com.example.demo.web.board.dto.BoardRequest;
 //import com.example.demo.dto.request.LikeRequest;
 //import com.example.demo.entity.board.photoBoard.PhotoBoard;
 //import com.example.demo.entity.board.photoBoard.PhotoBoardLike;
-//import com.example.demo.repository.board.photoBoard.PhotoBoardLikeRepository;
-//import com.example.demo.repository.board.photoBoard.PhotoBoardRepository;
+//import com.example.demo.domain.photoBoard.repository.PhotoBoardLikeRepository;
+//import com.example.demo.domain.photoBoard.repository.PhotoBoardRepository;
 //
 //import com.example.demo.service.board.BaseBoardService;
 //import lombok.extern.slf4j.Slf4j;

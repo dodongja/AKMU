@@ -5,8 +5,8 @@
 //import com.example.demo.dto.response.CommentResponse;
 //import com.example.demo.entity.board.freeBoard.FreeBoard;
 //import com.example.demo.entity.board.freeBoard.FreeBoardComments;
-//import com.example.demo.repository.board.freeBoard.FreeBoardCommentsRepository;
-//import com.example.demo.repository.board.freeBoard.FreeBoardRepository;
+//import com.example.demo.domain.freeBoard.repository.FreeBoardCommentsRepository;
+//import com.example.demo.domain.freeBoard.repository.FreeBoardRepository;
 //import com.example.demo.service.board.BaseCommentService;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;

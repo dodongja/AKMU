@@ -6,8 +6,8 @@
 //import com.example.demo.entity.board.freeBoard.FreeBoardComments;
 //import com.example.demo.entity.board.photoBoard.PhotoBoard;
 //import com.example.demo.entity.board.photoBoard.PhotoBoardComments;
-//import com.example.demo.repository.board.photoBoard.PhotoBoardCommentsRepository;
-//import com.example.demo.repository.board.photoBoard.PhotoBoardRepository;
+//import com.example.demo.domain.photoBoard.repository.PhotoBoardCommentsRepository;
+//import com.example.demo.domain.photoBoard.repository.PhotoBoardRepository;
 //import com.example.demo.service.board.BaseCommentService;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.example.demo.repository.board.freeBoard;
+package com.example.demo.domain.board.freeBoard.repository;
 
-import com.example.demo.domain.board.freeBoard.FreeBoardComments;
+import com.example.demo.domain.board.freeBoard.entity.FreeBoardComments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

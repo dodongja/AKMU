@@ -1,4 +1,4 @@
-package com.example.demo.domain.board.freeBoard;
+package com.example.demo.domain.board.freeBoard.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
