@@ -19,32 +19,15 @@
         <v-card-text class="grey lighten-5" dense dark>
             <v-container>
                 <v-form ref="form" lazy-validation>
-                  <v-radio-group v-if="this.$store.state.userInfo != null" v-model="radioGroup" row>
-                     <v-radio label="사용자"></v-radio>
-                  </v-radio-group>
-            <table>
-                <tr>
-                    <td>아이디</td>
-                    <td><input type="text" v-model="id"></td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td><input type="password" v-model="pw"></td>
-                </tr>
-            </table>
-
                 <v-row>
-                    <v-text-field  class="pl-3 pr-3" :rules="userIdRules" v-model="userId"
-                        label="아이디" type="text" prepend-icon="mdi-account" flat solo>
+                     <v-text-field class="pl-3 pr-3" :rules="emailRules" required v-model="email"
+                        label="이메일" type="text" prepend-icon="mdi-email-multiple" flat solo>
                     </v-text-field>
                     <v-text-field  class="pl-3 pr-3"  :rules="passwordRules" required  v-model="password"
                         label="비밀번호" type="password" prepend-icon="mdi-lock" flat solo>
                     </v-text-field>
                     <v-text-field  class="pl-3 pr-3"  :rules="passwordCheckRules" required  v-model="passwordChecking"
                         label="비밀번호확인" type="password" prepend-icon="mdi-lock" flat solo>
-                    </v-text-field>
-                    <v-text-field class="pl-3 pr-3" :rules="emailRules" required v-model="email"
-                        label="이메일" type="text" prepend-icon="mdi-email-multiple" flat solo>
                     </v-text-field>
                     <v-text-field class="pl-3 pr-3" :rules="nicknameRules"  required v-model="nickname"
                         label="닉네임" type="text" prepend-icon="mdi-account" flat solo>
@@ -68,7 +51,6 @@
 <script>
 
 import axios from 'axios'
-
 
 export default {  
     name: 'MemberSignUp',
@@ -110,28 +92,25 @@ export default {
     },
     methods: {
         signUp () {
-        const { userId, password, email, nickname } = this
-        const auth = this.radioGroup
+        const { email, password, nickname } = this
         const validate = this.$refs.form.validate();
             if (validate){
-                axios.post('http://localhost:7777/member/register', { userId, password, email, nickname, auth })
-                    .then(res => {
-                        if(res.data.message == "가입 되었습니다"){
-                        alert(res.data.message)
-                        this.signUpDialog = false
-                        this.$router.go()
-                        }else{
-                        alert(res.data.message)        
+                axios.post('http://localhost:7777/user/register', { email, password,nickname })
+                    .then((res) =>  {
+                        if(res.data == true){
+                            alert('가입되었습니다')
+                        } else {
+                            alert('아이디 중복입니다')
                         }
-                        })
-                    
-                        .catch(() => {
+                    })
+                    .catch(() => {
                         alert('오류발생')
                             })
              
+            
             }
-        }
 
+        }
     }
 }
 </script>

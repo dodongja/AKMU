@@ -6,17 +6,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UserRequest {
-    private String userId;
+    private String email;
     private String password;
     private String nickname;
-    private String email;
-    private String auth;
 
-    public UserRequest(String userId, String password, String nickname, String email, String auth){
-        this.userId = userId;
+    public UserRequest(String email, String password, String nickname){
+        this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.email = email;
-        this.auth = auth;
     }
 }

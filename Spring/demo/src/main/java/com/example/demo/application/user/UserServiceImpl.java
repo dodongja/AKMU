@@ -1,20 +1,13 @@
 package com.example.demo.application.user;
 
-import com.example.demo.domain.board.user.repository.UserRepository;
+import com.example.demo.domain.user.repository.UserRepository;
 import com.example.demo.web.user.dto.UserRequest;
-import com.example.demo.dto.response.DuplicationCheck;
-import com.example.demo.domain.board.user.entity.User;
-import com.example.demo.domain.board.user.entity.Role;
+import com.example.demo.domain.user.entity.User;
+import com.example.demo.domain.user.entity.Role;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-
-
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -27,28 +20,27 @@ public class UserServiceImpl implements UserService {
 
     /**
      *
-     * @param memberRequest
+     * @param userRequest
      * @return
      * 중복 체크하고 회원 가입 되어야 함    */
     @Override
-    public DuplicationCheck register(UserRequest userRequest) {
+    public void register(UserRequest userRequest) {
 
         String encodedPassword = passwordEncoder.encode(userRequest.getPassword());
 
         User user = User.builder()
                 .email(userRequest.getEmail())
+                .role(Role.USER)
                 .nickname(userRequest.getNickname())
                 .password(encodedPassword)
                         .build();
 
+        //unique 쓰면 중복되면 어떻게 될까?
         userRepository.save(user);
-
-
-        return message;
 
         }
 
-    @Override
+    /*@Override
     public UserRequest login(UserRequest memberRequest) {
             Optional<User> maybeMember = memberRepository.findByUserId(memberRequest.getUserId());
 
@@ -95,5 +87,5 @@ public class UserServiceImpl implements UserService {
             Optional<User> maybeMember = memberRepository.findByUserId(member.getUserId());
             User removeMember = maybeMember.get();
             memberRepository.deleteById(removeMember.getMemberNo());
-    }
+    }*/
 }

@@ -12,28 +12,32 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/member")
+@RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:8080", allowedHeaders = "*")
 public class UserController {
 
     @Autowired
-    private UserService memberService;
+    private UserService userService;
 
 
     @PostMapping("/register")
-    public DuplicationCheck memberRegister(UserRequest userRequest){
+    public boolean memberRegister(@RequestBody UserRequest userRequest){
         log.info("memberRegister request" + userRequest);
 
-
-        return memberService.register(userRequest);
-
+        try {
+            userService.register(userRequest);
+            return true;
+        }catch (Exception e){
+            //unique 하니깐 이쪽으로 오긴하네
+            return false;
+        }
     }
 
-    @PostMapping("/login")
+   /* @PostMapping("/login")
     public UserRequest memberLogin (@RequestBody UserRequest memberRequest) {
         log.info("MemberLogin()" + memberRequest);
 
-        UserRequest memberResponse = memberService.login(memberRequest);
+        UserRequest memberResponse = userService.login(memberRequest);
 
         if (memberResponse != null){
             log.info("Login Success");
@@ -47,7 +51,7 @@ public class UserController {
     public UserRequest memberInformationModify (@RequestBody UserRequest memberRequest) {
         log.info("memberModify(): " + memberRequest.getPassword());
 
-        memberService.modify(memberRequest);
+        userService.modify(memberRequest);
 
         return memberRequest;
     }

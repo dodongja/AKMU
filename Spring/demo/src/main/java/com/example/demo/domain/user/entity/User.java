@@ -1,4 +1,4 @@
-package com.example.demo.domain.board.user.entity;
+package com.example.demo.domain.user.entity;
 
 import lombok.Builder;
 import lombok.Data;
@@ -45,9 +45,10 @@ public class User {
     private Role role;
 
     @Builder
-    public User(String email, String password, String nickname) {
+    public User(String email,  String password, Role role, String nickname) {
         this.email = email;
         this.password = password;
+        this.role = role;
         this.nickname = nickname;
     }
 
