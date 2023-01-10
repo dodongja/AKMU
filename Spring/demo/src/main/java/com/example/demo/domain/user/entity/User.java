@@ -22,7 +22,7 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(length = 15,
+    @Column(length = 30,
             nullable = false,
             unique = true)
     private String email;

@@ -24,9 +24,17 @@ public class UserServiceImpl implements UserService {
      * @return
      * 중복 체크하고 회원 가입 되어야 함    */
     @Override
-    public void register(UserRequest userRequest) {
+    public String register(UserRequest userRequest) {
 
         String encodedPassword = passwordEncoder.encode(userRequest.getPassword());
+
+        if(userRepository.existsByEmail(userRequest.getEmail())){
+            return "이메일 중복 입니다";
+        }
+
+        if(userRepository.existsByNickname(userRequest.getNickname())){
+            return "닉네임 중복 입니다";
+        }
 
         User user = User.builder()
                 .email(userRequest.getEmail())
@@ -35,9 +43,10 @@ public class UserServiceImpl implements UserService {
                 .password(encodedPassword)
                         .build();
 
-        //unique 쓰면 중복되면 어떻게 될까?
+
         userRepository.save(user);
 
+        return "가입 되었습니다";
         }
 
     /*@Override

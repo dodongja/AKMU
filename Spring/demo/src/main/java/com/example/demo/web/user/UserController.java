@@ -1,13 +1,15 @@
 package com.example.demo.web.user;
 
 import com.example.demo.web.user.dto.UserRequest;
-import com.example.demo.dto.response.DuplicationCheck;
 import com.example.demo.application.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
@@ -19,21 +21,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @PostMapping("/register")
-    public boolean memberRegister(@RequestBody UserRequest userRequest){
+    public ResponseEntity<Map<String, Object>> memberRegister(@RequestBody UserRequest userRequest){
         log.info("memberRegister request" + userRequest);
+        ResponseEntity<Map<String, Object>> response = null;
+        Map<String, Object> body = new HashMap<>();
 
         try {
-            userService.register(userRequest);
-            return true;
-        }catch (Exception e){
-            //unique 하니깐 이쪽으로 오긴하네
-            return false;
+            String message = userService.register(userRequest);
+            body.put("message", message);
+            response = new ResponseEntity<>(body, HttpStatus.OK);
+        }catch (RuntimeException runtimeException){
+            response = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+        return response;
     }
 
-   /* @PostMapping("/login")
+   /*@PostMapping("/login")
     public UserRequest memberLogin (@RequestBody UserRequest memberRequest) {
         log.info("MemberLogin()" + memberRequest);
 
@@ -45,8 +49,8 @@ public class UserController {
             log.info("Login Fail");
         }
         return memberResponse;
-    }
-
+    }*/
+    /*
     @PutMapping("/modify")
     public UserRequest memberInformationModify (@RequestBody UserRequest memberRequest) {
         log.info("memberModify(): " + memberRequest.getPassword());
@@ -55,7 +59,7 @@ public class UserController {
 
         return memberRequest;
     }
-
+    */
     /*@DeleteMapping("/remove")
     public void MemberInformationRemove(@RequestBody User member) {
         log.info("MemberRemove()" + member.getMemberNo());
