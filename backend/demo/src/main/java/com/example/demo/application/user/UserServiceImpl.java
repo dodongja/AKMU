@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         );
 
         log.info("Set authentication");
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication); //1 ~10이 여기서 이루어지냐?
 
         String access_token = tokenProvider.createAccessToken(authentication);
         String refresh_token = tokenProvider.createRefreshToken(authentication);

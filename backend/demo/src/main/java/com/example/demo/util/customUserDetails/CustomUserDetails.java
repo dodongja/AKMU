@@ -1,10 +1,14 @@
 package com.example.demo.util.customUserDetails;
 
+import com.example.demo.domain.user.entity.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 //security가 /login 주소 요청이 오면 낚아채서 로그인을 진행시킨다.
 //로그인 진행이 완료가 되면 시큐리티 session을 만들어 준다 (Security ContextHolder)
@@ -15,19 +19,29 @@ import java.util.Collection;
 // 그래서 커스텀 유저 디테일에 두개를 implements해서 어떤 로그인이든 커스텀유저디테일로 정보를 가져 올 수 있도록 함
 @Data
 public class CustomUserDetails implements UserDetails {
+
+    private User user;
+
+    public CustomUserDetails(User user){
+        this.user = user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+            List<GrantedAuthority> role = new ArrayList<>();
+            role.add(new SimpleGrantedAuthority(getUsername()));
+        return role;
+
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getEmail();
     }
 
     @Override
